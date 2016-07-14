@@ -1,2 +1,2 @@
 # page
-the front end of my technology web site
+the front end of my technology web site.
