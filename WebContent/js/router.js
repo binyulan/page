@@ -17,8 +17,6 @@ define([ 'jquery', 'underscore', 'backbone',
             
             homeView: function() {
                 var homeView = new HomeView().render();
-                $('#presentation').empty();
-                $('#presentation').append(homeView.$el);
             },
             
             articleView: function(type) {
@@ -27,8 +25,6 @@ define([ 'jquery', 'underscore', 'backbone',
             
             articleMainView: function(id) {
                 var articleView = new ArticleMainView().render(id);
-                $('#presentation').empty();
-                $('#presentation').append(articleView.$el);
             }
         });
         return Router;

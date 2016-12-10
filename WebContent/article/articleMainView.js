@@ -29,6 +29,8 @@ define([ 'jquery', 'underscore', 'backbone',
                 article.fetch({success: _.bind(function(model){
                     this.$el.append(this.articleMainTemplate(model.toJSON()));
                     SyntaxHighlighter.highlight();
+                    $('#presentation').empty();
+                    $('#presentation').append(this.$el);
                     $('#myModal').modal("hide");
                 }, this)});
                 return this;
