@@ -29,11 +29,13 @@ define([ 'jquery', 'underscore', 'backbone',
                 article.fetch({success: _.bind(function(model){
                     this.$el.append(this.articleMainTemplate(model.toJSON()));
                     SyntaxHighlighter.highlight();
+                    $('#myModal').modal("hide");
                 }, this)});
                 return this;
             },
             
             saveComment: function() {
+                $('#myModal').modal();
                 var commentModel = new CommentModel();
                 commentModel.set("articleId", $("#articleId").val());
                 commentModel.set("comment", $("#comment").val());
@@ -41,6 +43,7 @@ define([ 'jquery', 'underscore', 'backbone',
                     _.bind(function(model) {
                             $("#comments").append(this.commentTemplate(model.toJSON()));
                             $("#comment").val("");
+                            $('#myModal').modal("hide");
                     },this)
                 });
             }

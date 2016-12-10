@@ -37,6 +37,7 @@ define([ 'jquery', 'underscore', 'backbone',
                 articleCollection.url = articleCollection.url + "/JAVA"
                 articleCollection.fetch({success: _.bind(function(articles){
                     this.$el.append(this.template(articles.toJSON()));
+                    $('#myModal').modal('hide');
                 }, this)});
                 $(".nav li[data-id]").bind("click", _.bind(this.getArticles, this));
                 $(".nav li[data-id]").bind("click", function(){
@@ -55,16 +56,19 @@ define([ 'jquery', 'underscore', 'backbone',
             },
             
             getArticle: function(event){
+                $('#myModal').modal();
                 window.router.navigate('articleMain/' + $(event.target).data("id"), {trigger: true});
             },
             
             getArticles: function(event){
+                $('#myModal').modal();
                 this.$el.empty();
                 var articleCollection = new ArticleCollection();
                 var type = $(event.currentTarget).data("id");
                 articleCollection.url = articleCollection.url + "/" + type
                 articleCollection.fetch({success: _.bind(function(articles){
                     this.$el.append(this.template(articles.toJSON()));
+                    $('#myModal').modal("hide");
                 }, this)});
             }
         });

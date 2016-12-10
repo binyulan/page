@@ -52,4 +52,6 @@ require(['backbone', 'router'], function(Backbone, Router){
     var router = new Router();
     window.router = router;
     Backbone.history.start();
+    $('#myModal').modal();
+    $('.progress-bar').css("width", "100%");
 })
