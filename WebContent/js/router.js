@@ -11,12 +11,13 @@ define([ 'jquery', 'underscore', 'backbone',
         var Router = Backbone.Router.extend({
             routes: {
                 '': 'homeView',
+                ':type': 'homeView',
                 'article/:type': 'articleView',
                 'articleMain/:id': 'articleMainView'
             },
             
-            homeView: function() {
-                var homeView = new HomeView().render();
+            homeView: function(type) {
+                var homeView = new HomeView().render(type);
             },
             
             articleView: function(type) {

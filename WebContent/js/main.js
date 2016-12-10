@@ -48,10 +48,14 @@ require.config({
     }
 });
 
-require(['backbone', 'router'], function(Backbone, Router){
+require(['router'], function(Router){
     var router = new Router();
     window.router = router;
     Backbone.history.start();
     $('#myModal').modal();
     $('.progress-bar').css("width", "100%");
+    $(".nav li[data-id]").bind("click", function(){
+        $(".navbar-nav li").removeClass("active");
+        $(this).addClass("active");
+    });
 })

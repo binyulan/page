@@ -33,12 +33,6 @@ define([ 'jquery', 'underscore', 'backbone',
             },
             
             initialize: function() {
-                $(".nav li[data-id]").bind("click", _.bind(this.getArticles, this));
-                $(".nav li[data-id]").bind("click", function(){
-                    $(".navbar-nav li").removeClass("active");
-                    $(this).addClass("active");
-                });
-
                 $("#searchArticle").bind("click", function(){
                     if ($("#searchText").val()) {
                         $(".list-group-item").hide();
@@ -49,10 +43,10 @@ define([ 'jquery', 'underscore', 'backbone',
                 })
             },
             
-            render: function(){
+            render: function(type){
                 $('#myModal').modal();
                 var articleCollection = new ArticleCollection();
-                articleCollection.url = articleCollection.url + "/JAVA"
+                articleCollection.url = articleCollection.url + "/" + (type ? type : "JAVA")
                 articleCollection.fetch({success: _.bind(function(articles){
                     this.$el.append(this.template(articles.toJSON()));
                     $('#presentation').empty();
