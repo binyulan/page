@@ -28,8 +28,8 @@ define(['bootstrap', 'jquery', 'underscore', 'backbone',
                                 $("#text").val(article.text);
                             }
                         }, this))
-                        $('#myModal').modal("hide");
-                    })
+                    });
+                    $('#myModal').modal("hide");
                 }, this)});
                 return this;
             },
