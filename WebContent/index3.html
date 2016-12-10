@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<title>首页</title>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="lib/syntaxhighlighter/styles/shCoreDefault.css"/>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+<script type="text/javascript" src="lib/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="lib/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+<body style="background-color:#f5f5f5">
+<meta name="keywords" content="Hibernate 环境搭建, Hibernate, 环境搭建" />
+<meta name="description" content="Hibernate 环境搭建" />
+<div class="page-header">
+    <h1>Hibernate 增删改查</h1>
+</div>
+<p><strong>一. 增</strong></p>
+在第一节中的单元测试类<code>SimpleTest.java</code>中编写新增代码
+<pre class="brush: java">
+	@Test
+	public void testSave() {
+		Article article = new Article();
+		article.setTitle("hibernate save");
+		article.setContent("use save");
+		session.save(article);
+		System.out.println(article.getId()); // article保存后被赋值id
+	}
+}
+</pre>
+<a style="cursor: pointer;"
+onclick='$("#video1").html("<video style=\"width:620px;\" controls=\"controls\" src=\"video/hibernate/hibernate-2.1.mp4\"></video>")'>见视频操作，可最大化</a>
+<p id="video1"></p>
+
+<p><strong>二. 查</strong></p>
+<pre class="brush: java">
+	@Test
+	public void testGet() {
+		Article article = (Article) session.get(Article.class, 5L);
+		System.out.println(article);
+	}
+	
+	@Test
+	public void testLoad() {
+		Article article = (Article) session.load(Article.class, 5L);
+		System.out.println(article);
+	}
+</pre>
+<a style="cursor: pointer;"
+onclick='$("#video2").html("<video style=\"width:620px;\" controls=\"controls\" src=\"video/hibernate/hibernate-2.2.mp4\"></video>")'>见视频操作，可最大化</a>
+<p id="video2"></p>
+</body>
+</html>
