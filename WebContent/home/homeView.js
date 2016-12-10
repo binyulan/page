@@ -55,7 +55,7 @@ define([ 'jquery', 'underscore', 'backbone',
             },
             
             getArticle: function(event){
-                window.router.navigate('mainarticleMain/' + $(event.target).data("id"), {trigger: true});
+                window.router.navigate('articleMain/' + $(event.target).data("id"), {trigger: true});
             },
             
             getArticles: function(event){

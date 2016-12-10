@@ -12,7 +12,7 @@ define([ 'jquery', 'underscore', 'backbone',
             routes: {
                 '': 'homeView',
                 'article/:type': 'articleView',
-                'mainarticleMain/:id': 'articleMainView'
+                'articleMain/:id': 'articleMainView'
             },
             
             homeView: function() {
