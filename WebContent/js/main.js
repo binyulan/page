@@ -9,7 +9,7 @@ require.config({
         'handlebars' : 'http://cdn.bootcss.com/handlebars.js/4.0.5/handlebars.min',
         'bootstrap' : 'http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min',
         'text': 'http://cdn.bootcss.com/require-text/2.0.12/text.min',
-        'ztree': './jquery.ztree.all.min',
+        //'ztree': './jquery.ztree.all.min',
         'shCore': '../lib/syntaxhighlighter/scripts/shCore',
         'shBrushXml': '../lib/syntaxhighlighter/scripts/shBrushXml',
         'shBrushJava': '../lib/syntaxhighlighter/scripts/shBrushJava'
@@ -30,10 +30,11 @@ require.config({
         'handlebars': {
             exports: 'handlebars'
         },
+        /*
         'ztree': {
             deps: ['jquery'],
             exports: 'ztree'
-        },
+        },*/
         'shCore': {
             exports: 'shCore'
         },
