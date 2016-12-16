@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="java, javascript, spring, hiberante" />
+<meta name="description" content="韩斌的个人博客" />
+<title>Hibernate 增删改查</title>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="lib/syntaxhighlighter/styles/shCoreDefault.css"/>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+<script type="text/javascript" src="lib/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="lib/syntaxhighlighter/scripts/shBrushJava.js"></script>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+<body style="background-color:#f5f5f5">
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div>
+            <ul class="nav navbar-nav">
+                <li data-id="JAVA" class="active"><a href="/#JAVA">Java</a></li>
+                <li data-id="JAVASCRIPT"><a href="/#JAVASCRIPT">Javascript</a></li>
+                <li data-id="SPRING"><a href="/#JAVASCRIPT">Spring</a></li>
+                <li data-id="BACKBONEJS"><a href="/#JAVASCRIPT">Hiberante</a></li>
+                <li>
+	                <form class="navbar-form">
+			            <div class="form-group">
+			                <input id="searchText" type="text" onkeypress="if(event.keyCode == 13)return false" class="form-control" placeholder="搜索">
+			            </div>
+			            <button id="searchArticle" type="button" class="btn btn-default">搜索</button>
+			        </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="presentation" style="margin:15px">
+<meta name="keywords" content="Hibernate 增删改查" />
+<meta name="description" content="Hibernate 增删改查" />
+<div class="page-header">
+    <h1>Hibernate 增删改查</h1>
+</div>
+<p><strong>一. 增</strong></p>
+在第一节中的单元测试类<code>SimpleTest.java</code>中编写新增代码
+<pre class="brush: java">
+	@Test
+	public void testSave() {
+		Article article = new Article();
+		article.setTitle("hibernate save");
+		article.setContent("use save");
+		session.save(article);
+		System.out.println(article.getId()); // article保存后被赋值id
+	}
+}
+</pre>
+<a style="cursor: pointer;"
+onclick='$("#video1").html("<video style=\"width:620px;\" controls=\"controls\" src=\"video/hibernate/hibernate-2.1.mp4\"></video>")'>见视频操作，可最大化</a>
+<p id="video1"></p>
+
+<p><strong>二. 查</strong></p>
+<pre class="brush: java">
+	@Test
+	public void testGet() {
+		Article article = (Article) session.get(Article.class, 5L);
+		System.out.println(article);
+	}
+	
+	@Test
+	public void testLoad() {
+		Article article = (Article) session.load(Article.class, 5L);
+		System.out.println(article);
+	}
+</pre>
+<a style="cursor: pointer;"
+onclick='$("#video2").html("<video style=\"width:620px;\" controls=\"controls\" src=\"video/hibernate/hibernate-2.2.mp4\"></video>")'>见视频操作，可最大化</a>
+<p id="video2"></p>
+
+<p><strong>三. 更新</strong></p>
+<pre class="brush: java">
+	/**
+	 * 使用查询方法查出article，直接设置需要修改的字段即可。
+	 * 查出的article被称为持久态对象，对持久态对象的修改会同步更新到数据库
+	 */
+	@Test
+	public void testUpdate() {
+		Article article = (Article) session.get(Article.class, 1L);
+		article.setTitle("new title");
+		article.setContent("new content");
+		System.out.println(article);
+	}
+	
+	@Test
+	public void testUpdate1() {
+		Article article = new Article();
+		article.setId(1L);
+		article.setTitle("new title");
+		article.setContent("new content");
+		session.update(article);
+		System.out.println(article);
+	}
+</pre>
+<a style="cursor: pointer;"
+onclick='$("#video3").html("<video style=\"width:620px;\" controls=\"controls\" src=\"video/hibernate/hibernate-2.3.mp4\"></video>")'>见视频操作，可最大化</a>
+<p id="video3"></p>
+
+<p><strong>四. 删除</strong></p>
+<pre class="brush: java">
+	@Test
+	public void testDelete() {
+		Article article = (Article)session.get(Article.class, 1L);;
+		session.delete(article);
+	}
+</pre>
+<a style="cursor: pointer;"
+onclick='$("#video4").html("<video style=\"width:620px;\" controls=\"controls\" src=\"video/hibernate/hibernate-2.4.mp4\"></video>")'>见视频操作，可最大化</a>
+<p id="video4"></p>
+</div>
+
+本文可提交评论地址：<a href="http://www.auuid.com/#articleMain/2">http://www.auuid.com/#articleMain/2</a>
+<br><br><br>
+</body>
+</html>
